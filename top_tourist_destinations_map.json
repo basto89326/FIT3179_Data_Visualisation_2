@@ -1,0 +1,44 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 450,
+    "title": "Top Tourist Destinations in Australia, July 2024",
+    "projection": {"type": "equirectangular"},
+    "data": {
+        "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/main/STE_2016_AUST.json",
+        "format": {"type": "topojson", "feature": "STE_2016_AUST"}
+    },
+    "transform": [
+        {
+            "lookup": "properties.STE_NAME16",
+            "from": {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/main/state_of_stay.csv"
+                },
+                "key": "Region",
+                "fields": ["Visitors", "Population"]
+            }
+        },
+        {
+            "calculate": "datum.Visitors / datum.Population * 1000",
+            "as": "Visitors per 1000 population"
+        }
+    ],
+    "mark": {"type": "geoshape", "stroke": "white"},
+    "encoding": {
+        "color": {
+            "field": "Visitors per 1000 population",
+            "type": "quantitative",
+            "scale": {
+                "type": "threshold",
+                "domain": [10, 15, 20, 25, 30],
+                "range": ["#fec866", "#feab4b", "#fd883b", "#fa5b2e", "#ec3023", "#d31221"]
+            }
+        },
+        "tooltip": [
+            {"field": "properties.STE_NAME16", "type": "nominal", "title": "State/Territory"},
+            {"field": "Visitors", "type": "quantitative", "format": ",d"},
+            {"field": "Visitors per 1000 population", "type": "quantitative", "format": ".2f"}
+        ]
+    }
+}
