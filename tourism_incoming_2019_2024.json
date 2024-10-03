@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Tourism Numbers 2019 vs 2024",
+    "title": "Pre vs Post COVID Tourism Numbers",
     "data": {
-        "url": "data/tourism_incoming.csv"
+        "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/tourism_incoming.csv"
     },
 
     "repeat": {"layer": ["2019", "2024"]},
@@ -20,7 +20,13 @@
                 "type": "quantitative",
                 "title": "Trips ('000)"
             },
-            "color": {"datum": {"repeat": "layer"}, "title": "Year"},
+
+            "color": {
+                "datum": {"repeat": "layer"}, 
+                "title": "Year",
+                "legend": {"title": "Year"}
+            },
+
             "xOffset": {"datum": {"repeat": "layer"}}
         }
     }
