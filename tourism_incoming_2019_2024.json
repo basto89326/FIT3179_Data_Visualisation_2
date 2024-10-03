@@ -1,0 +1,27 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Tourism Numbers 2019 vs 2024",
+    "data": {
+        "url": "data/tourism_incoming.csv"
+    },
+
+    "repeat": {"layer": ["2019", "2024"]},
+    "spec": {
+        "mark": "bar",
+        "encoding": {
+            "x": {
+                "field": "Country",
+                "type": "nominal"
+            },
+
+            "y": {
+                "aggregate": "sum",
+                "field": {"repeat": "layer"},
+                "type": "quantitative",
+                "title": "Trips ('000)"
+            },
+            "color": {"datum": {"repeat": "layer"}, "title": "Year"},
+            "xOffset": {"datum": {"repeat": "layer"}}
+        }
+    }
+}
