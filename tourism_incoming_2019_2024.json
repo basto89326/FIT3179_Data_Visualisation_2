@@ -7,13 +7,6 @@
 
     "repeat": {"layer": ["2019", "2024"]},
     "spec": {
-        "selection": {
-            "year_filter": {
-                "type": "multi",
-                "fields": ["2019, 2024"],
-                "bind": "legend"
-            }
-        },
         "mark": "bar",
         "encoding": {
             "x": {
@@ -30,14 +23,8 @@
 
             "color": {
                 "datum": {"repeat": "layer"}, 
-                "title": "Year",
-                "legend": {"title": "Year"}
-            },
-
-            "opacity": {
-                "condition": {"selection": "year_filter", "value": 1},
-                "value": 0.2
-            },
+                "title": "Year"},
+                
 
             "xOffset": {"datum": {"repeat": "layer"}}
         }
