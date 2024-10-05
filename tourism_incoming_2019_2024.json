@@ -44,7 +44,7 @@
                 "xOffset": {"field": "Year"},
                 "tooltip": [
                     {"field": "Country", "type": "nominal"},
-                    {"field": "Year", "type": "nominal"},
+                    {"field": "Year", "type": "ordinal"},
                     {"field": "Trips", "type": "quantitative", "title": "Trips ('000)"}
                 ]
             }
