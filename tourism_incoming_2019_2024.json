@@ -1,44 +1,130 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Pre vs Post COVID Tourism Numbers",
+    "title": "Tourism Numbers 2019 vs 2024",
     "data": {
         "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/tourism_incoming.csv"
     },
 
-    "selection": {
-        "year_filter": {
-            "type": "multi",
-            "fields": ["Year"],
-            "bind": "legend"
+    "layer": [
+        {   
+            "mark": "bar",
+            "selection": {
+                "year_filter": {
+                    "type": "multi",
+                    "fields": ["Year"],
+                    "bind": "legend"
+                }
+            },
+            
+            "encoding": {
+                "x": {
+                    "field": "Country",
+                    "type": "nominal"
+                },  
+
+                "y": {
+                    "aggregate": "sum",
+                    "field": "Trips",
+                    "type": "quantitative",
+                    "title": "Trips ('000)"
+                },
+
+                "color": {
+                    "field": "Year",
+                    "type": "nominal",
+                    "title": "Year",
+                    "legend": {"title": "Year (click to filter)"}
+                },
+
+                "opacity": {
+                    "condition": {"selection": "year_filter", "value": 1},
+                    "value": 0.2
+                },
+
+                "xOffset": {"field": "Year"},
+                "tooltip": [
+                    {"field": "Country", "type": "nominal"},
+                    {"field": "Year", "type": "nominal"},
+                    {"field": "Trips", "type": "quantitative", "title": "Trips ('000)"}
+                ]
+            }
+        },
+
+        {
+            "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": 25,
+                "dy": -30
+            },
+
+            "transform": [
+                {"filter": {"field": "Country", "equal": "China"}},
+
+                {
+                    "calculate": "'The number of trips in China was ;' + datum['Trips'] + ' thousand in ' + datum['Year']",
+                    "as": "text_annotation_raw"
+                },
+
+                {
+                    "calculate": "split(datum.text_annotation_raw, ';')",
+                    "as": "text_annotation"
+                }
+            ],
+
+            "encoding": {
+                "x": {
+                    "field": "Country",
+                    "type": "nominal"
+                },
+
+                "y": {
+                    "aggregate": "sum",
+                    "field": "Trips",
+                    "type": "quantitative"
+                },
+
+                "text": {"field": "text_annotation"}
+            }
+        },
+
+        {
+            "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": 0,
+                "dy": -153
+            },
+
+            "transform": [
+                {"filter": {"field": "Country", "equal": "Other Asia"}},
+                {"filter": {"field": "Year", "equal": "2019"}},
+
+                {
+                    "calculate": "'This is the largest % decrease of any ;country from 2019 to 2024. Most ;countries experienced a decrease in ;tourists coming to Australia from 2019 ;to 2024, likely due to COVID-19.'",
+                    "as": "text_annotation_raw"
+                },
+
+                {
+                    "calculate": "split(datum.text_annotation_raw, ';')",
+                    "as": "text_annotation"
+                }
+            ],
+
+            "encoding": {
+                "x": {
+                    "field": "Country",
+                    "type": "nominal"
+                },
+
+                "y": {
+                    "aggregate": "sum",
+                    "field": "Trips",
+                    "type": "quantitative"
+                },
+
+                "text": {"field": "text_annotation"}
+            }
         }
-    },
-
-    "mark": "bar",
-    "encoding": {
-        "x": {
-            "field": "Country",
-            "type": "nominal"
-        },
-
-        "y": {
-            "aggregate": "sum",
-            "field": "Trips",
-            "type": "quantitative",
-            "title": "Trips ('000)"
-        },
-
-        "color": {
-            "field": "Year",
-            "type": "nominal",
-            "title": "Year",
-            "legend": {"title": "Year"}
-        },
-
-        "opacity": {
-            "condition": {"selection": "year_filter", "value": 1},
-            "value": 0.2
-        },
-
-        "xOffset": {"field": "Year"}
-    }
+    ]
 }
