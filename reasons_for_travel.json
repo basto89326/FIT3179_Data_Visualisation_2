@@ -1,7 +1,47 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 200,
     "title": "Reasons for Travel - Year ended June 2024",
     "data": {
         "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/travel_reasons_prop.csv"
+    },
+
+    "mark": "bar",
+    "transform": [
+        {
+            "window": [
+                {
+                    "op": "rank", 
+                    "as": "ranking"
+                }
+            ],
+            "sort": [
+                {
+                    "field": "ranking", "order": "descending"
+                }
+            ]
+        }        
+    ],
+
+    "encoding": {
+        "x": {
+            "field": "Reason", 
+            "type": "nominal", 
+            "sort": "-y",
+            "scale": {"paddingInner": 0.2}
+        },
+
+        "y": {
+            "field": "Proportion",
+            "type": "quantitative"
+        },
+
+        "color": {
+            "condition": {
+                "test": "datum.ranking == 1",
+                "value": "#ffe000"
+            },
+            "value": "grey"
+        }
     }
 }
