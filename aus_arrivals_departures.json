@@ -1,44 +1,54 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Australia Arrivals and Departures",
+    "title": {
+        "text": "Tourism Numbers 2019 vs 2024",
+        "anchor": "middle"
+    },
     "data": {
         "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/arrivals_departures.csv"
     },
-    "transform": [
-        {
-            "fold": ["Arrivals", "Departures"],
-            "as": ["Category", "Value"]
-        }
-    ],
+    
     "vconcat": [
         {   
             "width": 480,
             "height": 240,
-            "mark": "line",
-            "encoding": {
-                "x": {
-                    "field": "Month",
-                    "type": "temporal",
-                    "scale":  {"domain": {"param": "brush"}},
-                    "axis": {"title": ""}
-                },
+            "layer": [
+                {
+                    "mark": "line",
+                    "encoding": {
+                        "x": {
+                            "field": "Month",
+                            "type": "temporal",
+                            "scale":  {"domain": {"param": "brush"}},
+                            "axis": {"title": ""}
+                        },
 
-                "y": {
-                    "field": "Value",
-                    "type": "quantitative"
-                },
+                        "y": {
+                            "field": "Value",
+                            "type": "quantitative",
+                            "title": "People (Millions)"
+                        },
 
-                "color": {
-                    "field": "Category",
-                    "type": "nominal"
+                        "color": {
+                            "field": "Category",
+                            "type": "nominal"
+                        },
+
+                        "tooltip": [
+                            {"field": "Month", "type": "temporal"},
+                            {"field": "Category", "type": "nominal"},
+                            {"field": "Value", "type": "quantitative", "title": "People (M)"}
+                        ]
+                    }
                 }
-            }
+            ]
         },
 
         {
             "width": 480,
             "height": 60,
             "mark": "line",
+            "title": "Use this chart to filter the data based on time",
             "params": [
                 {"name": "brush", "select": {"type": "interval","encodings": ["x"]}}
             ],
@@ -51,13 +61,20 @@
 
                 "y": {
                     "field": "Value",
-                    "type": "quantitative"
+                    "type": "quantitative",
+                    "title": "People"
                 },
 
                 "color": {
                     "field": "Category",
                     "type": "nominal"
-                }
+                },
+
+                "tooltip": [
+                    {"field": "Month", "type": "temporal"},
+                    {"field": "Category", "type": "nominal"},
+                    {"field": "Value", "type": "quantitative", "title": "People (M)"}
+                ]
             }
         }
     ]
