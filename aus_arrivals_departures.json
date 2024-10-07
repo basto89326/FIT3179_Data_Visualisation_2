@@ -1,0 +1,64 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Australia Arrivals and Departures",
+    "data": {
+        "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/arrivals_departures.csv"
+    },
+    "transform": [
+        {
+            "fold": ["Arrivals", "Departures"],
+            "as": ["Category", "Value"]
+        }
+    ],
+    "vconcat": [
+        {   
+            "width": 480,
+            "height": 240,
+            "mark": "line",
+            "encoding": {
+                "x": {
+                    "field": "Month",
+                    "type": "temporal",
+                    "scale":  {"domain": {"param": "brush"}},
+                    "axis": {"title": ""}
+                },
+
+                "y": {
+                    "field": "Value",
+                    "type": "quantitative"
+                },
+
+                "color": {
+                    "field": "Category",
+                    "type": "nominal"
+                }
+            }
+        },
+
+        {
+            "width": 480,
+            "height": 60,
+            "mark": "line",
+            "params": [
+                {"name": "brush", "select": {"type": "interval","encodings": ["x"]}}
+            ],
+
+            "encoding": {
+                "x": {
+                    "field": "Month",
+                    "type": "temporal"
+                },
+
+                "y": {
+                    "field": "Value",
+                    "type": "quantitative"
+                },
+
+                "color": {
+                    "field": "Category",
+                    "type": "nominal"
+                }
+            }
+        }
+    ]
+}
