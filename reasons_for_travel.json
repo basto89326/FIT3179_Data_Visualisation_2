@@ -2,6 +2,6 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Reasons for Travel - Year ended June 2024",
     "data": {
-        "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/tourism_incoming.csv"
+        "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/travel_reasons_prop.csv"
     }
 }
