@@ -5,29 +5,24 @@
     "data": {
         "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/travel_reasons_prop.csv"
     },
-
-    "mark": "bar",
-    "transform": [
+    "params": [
         {
-            "window": [
-                {
-                    "op": "rank", 
-                    "as": "ranking"
-                }
-            ],
-            "sort": [
-                {
-                    "field": "ranking", "order": "descending"
-                }
-            ]
-        }        
+            "name": "highlight",
+            "select": {
+                "type": "point",
+                "on": "pointerover"
+            }
+        }
     ],
-
+    "mark": "bar",
     "encoding": {
         "x": {
             "field": "Reason", 
             "type": "nominal", 
-            "sort": "-y",
+            "sort": {
+                "field": "Proportion",
+                "order": "descending"
+            },
             "scale": {"paddingInner": 0.2}
         },
 
@@ -37,11 +32,25 @@
         },
 
         "color": {
+            "sort": {
+                "field": "Proportion", 
+                "order": "descending"
+            },
+
             "condition": {
-                "test": "datum.ranking == 1",
-                "value": "#ffe000"
+                "param": "highlight",
+                "field": "Reason",
+                "type": "nominal",
+                "scale": {
+                    "scheme": "set1"
+                }
             },
             "value": "grey"
-        }
+        },
+
+        "tooltip": [
+            {"field": "Reason", "type": "nominal", "title": "Reason for Travel"},
+            {"field": "Proportion", "type": "quantitative"}
+        ]
     }
 }
