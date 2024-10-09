@@ -1,6 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Tourism Numbers 2019 vs 2024",
+    "width": 400,
+    "title": "Tourism Numbers in Australia 2019 vs 2024",
     "data": {
         "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/tourism_incoming.csv"
     },
@@ -54,7 +55,7 @@
             "mark": {
                 "type": "text",
                 "align": "left",
-                "dx": 25,
+                "dx": 15,
                 "dy": -30
             },
 
@@ -62,7 +63,7 @@
                 {"filter": {"field": "Country", "equal": "China"}},
 
                 {
-                    "calculate": "'The number of trips in China was ;' + datum['Trips'] + ' thousand in ' + datum['Year']",
+                    "calculate": "'The number of trips in China ;was ' + datum['Trips'] + ' thousand in ' + datum['Year']",
                     "as": "text_annotation_raw"
                 },
 
@@ -101,7 +102,7 @@
                 {"filter": {"field": "Year", "equal": "2019"}},
 
                 {
-                    "calculate": "'This is the largest % decrease of any ;country from 2019 to 2024. Most ;countries experienced a decrease in ;tourists coming to Australia from 2019 ;to 2024, likely due to COVID-19.'",
+                    "calculate": "'This is the largest % decrease of ;any country from 2019 to 2024. ;Most countries experienced a ;decrease in tourists coming to ;Australia from 2019 to 2024, likely ;due to COVID-19.'",
                     "as": "text_annotation_raw"
                 },
 

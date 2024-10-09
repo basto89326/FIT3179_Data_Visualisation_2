@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 200,
-    "title": "Reasons for Travel - Year ended June 2024",
+    "title": "Reasons for Travel of Incoming Tourists - Year ended June 2024",
     "data": {
         "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/travel_reasons_prop.csv"
     },
@@ -50,7 +50,7 @@
 
         "tooltip": [
             {"field": "Reason", "type": "nominal", "title": "Reason for Travel"},
-            {"field": "Proportion", "type": "quantitative"}
+            {"field": "Proportion", "type": "quantitative", "title": "% of Total"}
         ]
     }
 }
