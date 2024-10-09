@@ -101,7 +101,7 @@
           "y2": {"field": "y1"},
           "fill": {"value": "transparent"},
           "tooltip": {
-            "signal": "{'Country': datum.name, 'Continent': datum.continent, 'People (thousands)': datum.size}"
+            "signal": "{'Country': datum.name, 'Region': datum.continent, 'People (thousands)': datum.size}"
           }
         },
         "hover": {
@@ -133,7 +133,7 @@
   "legends": [
     {
       "fill": "color",
-      "title": "Continents"
+      "title": "Regions"
     }
   ]
 }
