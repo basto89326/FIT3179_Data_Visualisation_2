@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 700,
-  "height": 400,
-  "title": "Visitor Country of Residence for Year ended June 2024",
+  "width": 612,
+  "height": 350,
+  "title": "Visitor Country of Residence, Year ended June 2024",
 
   "data": [
     {
@@ -119,7 +119,7 @@
           "baseline": {"value": "middle"},
           "fill": {"value": "#000"},
           "text": {"field": "name"},
-          "fontSize": {"value": 10},
+          "fontSize": {"value": 8.5},
           "fillOpacity": {"scale": "opacity", "field": "depth"}
         },
         "update": {
@@ -127,6 +127,13 @@
           "y": {"signal": "0.5 * (datum.y0 + datum.y1)"}
         }
       }
+    }
+  ],
+
+  "legends": [
+    {
+      "fill": "color",
+      "title": "Continents"
     }
   ]
 }

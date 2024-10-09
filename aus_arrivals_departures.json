@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": {
-        "text": "Australia Arrivals and Departures 2014-2024",
+        "text": "Australia Arrivals and Departures, 2014-2024",
         "anchor": "middle"
     },
     "data": {

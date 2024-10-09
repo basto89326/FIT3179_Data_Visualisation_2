@@ -1,7 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 400,
-    "title": "Tourism Numbers in Australia 2019 vs 2024",
+    "width": 423,
+    "height": 247,
+    "title": "Tourism Numbers in Australia, 2019 vs 2024",
     "data": {
         "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/tourism_incoming.csv"
     },
@@ -56,7 +57,7 @@
                 "type": "text",
                 "align": "left",
                 "dx": 15,
-                "dy": -30
+                "dy": -35
             },
 
             "transform": [
@@ -94,7 +95,7 @@
                 "type": "text",
                 "align": "left",
                 "dx": 0,
-                "dy": -153
+                "dy": -183
             },
 
             "transform": [
