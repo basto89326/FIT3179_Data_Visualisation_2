@@ -1,9 +1,11 @@
 {
-  "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 612,
-  "height": 350,
-  "title": "Visitor Country of Residence, Year ended June 2024",
-
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "width": 612,
+    "height": 350,
+    "title": {
+      "text": "Visitor Country of Residence, Year ended June 2024",
+      "fontSize": 14
+  },
   "data": [
     {
       "name": "tree",
@@ -53,7 +55,7 @@
       "type": "ordinal",
       "domain": {"data": "nodes", "field": "name"},
       "range": [
-        "#ffff33", "#984ea3", "#377eb8", "#4daf4a", "#ff7f00"
+        "#bcbd22", "#17becf", "#7f7f7f", "#e377c2", "#8c564b"
       ]
     },
     {

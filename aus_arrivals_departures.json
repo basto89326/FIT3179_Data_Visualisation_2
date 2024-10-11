@@ -2,7 +2,8 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": {
         "text": "Australia Arrivals and Departures, 2014-2024",
-        "anchor": "middle"
+        "anchor": "middle",
+        "fontSize": 14
     },
     "data": {
         "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/arrivals_departures.csv"

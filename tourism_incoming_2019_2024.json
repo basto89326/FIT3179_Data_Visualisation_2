@@ -2,7 +2,11 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 423,
     "height": 247,
-    "title": "Tourism Numbers in Australia, 2019 vs 2024",
+    "title": {
+        "text": "Tourism Numbers Coming to Australia, 2019 vs 2024",
+        "fontSize": 14
+    },
+
     "data": {
         "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/refs/heads/main/data/tourism_incoming.csv"
     },
@@ -28,14 +32,18 @@
                     "aggregate": "sum",
                     "field": "Trips",
                     "type": "quantitative",
-                    "title": "Trips ('000)"
+                    "title": "Trips (Thousands)"
                 },
 
                 "color": {
                     "field": "Year",
                     "type": "nominal",
                     "title": "Year",
-                    "legend": {"title": "Year (click to filter)"}
+                    "legend": {"title": "Year (click to filter)"},
+                    "scale": {
+                        "domain": ["2019", "2024"],
+                        "range": ["#721f81", "#f1605d"]
+                    }
                 },
 
                 "opacity": {
@@ -47,7 +55,7 @@
                 "tooltip": [
                     {"field": "Country", "type": "nominal"},
                     {"field": "Year", "type": "ordinal"},
-                    {"field": "Trips", "type": "quantitative", "title": "Trips ('000)"}
+                    {"field": "Trips", "type": "quantitative", "title": "Trips (thousands)"}
                 ]
             }
         },
@@ -64,7 +72,7 @@
                 {"filter": {"field": "Country", "equal": "China"}},
 
                 {
-                    "calculate": "'The number of trips in China ;was ' + datum['Trips'] + ' thousand in ' + datum['Year']",
+                    "calculate": "'The number of trips from China ;was ' + datum['Trips'] + ' thousand in ' + datum['Year']",
                     "as": "text_annotation_raw"
                 },
 

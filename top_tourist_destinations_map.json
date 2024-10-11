@@ -2,7 +2,11 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 1000,
     "height": 500,
-    "title": "Top Tourist Destinations in Australia, July 2024",
+    "title": {
+        "text": "Top Tourist Destinations in Australia, July 2024",
+        "fontSize": 14
+    },
+
     "projection": {"type": "equirectangular"},
     "data": {
         "url": "https://raw.githubusercontent.com/basto89326/FIT3179_Data_Visualisation_2/main/data/STE_2016_AUST.json",
