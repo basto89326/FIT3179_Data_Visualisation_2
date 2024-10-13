@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 400,
+    "width": 350,
     "height": 247,
     "title": {
         "text": "Tourism Numbers Coming to Australia, 2019 vs 2024",
@@ -12,7 +12,7 @@
     },
 
     "layer": [
-        {   
+        {
             "mark": "bar",
             "selection": {
                 "year_filter": {
@@ -21,24 +21,31 @@
                     "bind": "legend"
                 }
             },
-            
+
+            "transform": [
+                {
+                    "calculate": "datum.Year == 2019 ? -datum.Trips : datum.Trips",
+                    "as": "signed_trips"
+                }
+            ],
+
             "encoding": {
                 "x": {
-                    "field": "Country",
-                    "type": "nominal"
-                },  
+                    "aggregate": "sum",
+                    "field": "signed_trips",
+                    "type": "quantitative",
+                    "title": "Trips (Thousands)",
+                    "axis": {"format": "d"}
+                },
 
                 "y": {
-                    "aggregate": "sum",
-                    "field": "Trips",
-                    "type": "quantitative",
-                    "title": "Trips (Thousands)"
+                    "field": "Country",
+                    "type": "nominal"
                 },
 
                 "color": {
                     "field": "Year",
                     "type": "nominal",
-                    "title": "Year",
                     "legend": {"title": "Year (click to filter)"},
                     "scale": {
                         "domain": ["2019", "2024"],
@@ -51,7 +58,6 @@
                     "value": 0.2
                 },
 
-                "xOffset": {"field": "Year"},
                 "tooltip": [
                     {"field": "Country", "type": "nominal"},
                     {"field": "Year", "type": "ordinal"},
@@ -64,15 +70,16 @@
             "mark": {
                 "type": "text",
                 "align": "left",
-                "dx": 13,
-                "dy": -35
+                "dx": -333,
+                "dy": 15
             },
 
             "transform": [
                 {"filter": {"field": "Country", "equal": "China"}},
+                {"filter": {"field": "Year", "equal": "2019"}},
 
                 {
-                    "calculate": "'The number of trips from China; was ' + datum['Trips'] + ' thousand in ' + datum['Year']",
+                    "calculate": "'The number of trips from ;China was ' + datum['Trips'] + '; thousand in ' + datum['Year']",
                     "as": "text_annotation_raw"
                 },
 
@@ -83,19 +90,66 @@
             ],
 
             "encoding": {
-                "x": {
-                    "field": "Country",
-                    "type": "nominal"
-                },
 
-                "y": {
+                "x": {
                     "aggregate": "sum",
                     "field": "Trips",
                     "type": "quantitative"
                 },
 
+                "y": {
+                    "field": "Country",
+                    "type": "nominal"
+                },
+
+                "text": {"field": "text_annotation"}
+            }
+        },
+
+        {
+            "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": -32,
+                "dy": 15
+            },
+
+            "transform": [
+                {"filter": {"field": "Country", "equal": "China"}},
+                {"filter": {"field": "Year", "equal": "2024"}},
+
+                {
+                    "calculate": "'The number of trips from; China was ' + datum['Trips'] + '; thousand in ' + datum['Year']",
+                    "as": "text_annotation_raw"
+                },
+
+                {
+                    "calculate": "split(datum.text_annotation_raw, ';')",
+                    "as": "text_annotation"
+                }
+            ],
+
+            "encoding": {
+
+                "x": {
+                    "aggregate": "sum",
+                    "field": "Trips",
+                    "type": "quantitative"
+                },
+
+                "y": {
+                    "field": "Country",
+                    "type": "nominal"
+                },
+
                 "text": {"field": "text_annotation"}
             }
         }
-    ]
+    ],
+
+    "config": {
+        "axis": {
+            "gridOpacity": 0.5
+        }
+    }
 }
