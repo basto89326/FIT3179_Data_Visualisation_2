@@ -11,7 +11,7 @@
     
     "vconcat": [
         {   
-            "width": 400,
+            "width": 480,
             "height": 200,
             "layer": [
                 {
@@ -46,7 +46,7 @@
         },
 
         {
-            "width": 400,
+            "width": 480,
             "height": 50,
             "mark": "line",
             "title": "Use this chart to filter the data based on time",

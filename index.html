@@ -26,11 +26,50 @@
 
 <body>
     <h1 class="spicy-rice-regular">TOURISM IN AUSTRALIA</h1>
-    <div id="line_chart" class="graph"></div>
-    <div id="grouped_bar" class="graph"></div>
-    <div id="choropleth_map" class="graph"></div>
-    <div id="bar_chart" class="graph"></div>
-    <div id="tree_map" class="graph"></div>
+    <h2 class="header">Impact of COVID-19 on Tourism</h2>
+    <div class="pure-g">
+        <div class="flexbox">
+            <div class="pure-u-1-2">
+                <div id="line_chart"></div>
+                <p>In this line plot, there is an <strong>increasing trend</strong> in the number of arrivals and departures to and from Australia. There is also a structural break at the <strong>beginning of 2020</strong>, where the arrivals and departures <strong>dropped significantly</strong>. This is because Australia shut their borders at this time, so that no one could enter or exit the country. The borders eventually reopened <strong>early in 2022</strong>, which is when the arrivals and departures increased and returned close to their pre-COVID numbers.</p>
+            </div>
+            <div class="pure-u-1-2">
+                <div id="grouped_bar"></div>
+                <p>In this stacked bar chart, most countries experience a <strong>decrease</strong> in tourists coming to Australia from 2019 to 2024. The country with the largest drop off of visitors is <strong>China</strong>, with a <strong>49% decrease</strong> in tourists coming to Australia between these two time periods. The main reason for this drop off is likely <strong>COVID-19</strong>, which caused travelling in general to decrease.</p>
+            </div>
+        </div>
+        <div class="pure-u-1">
+            <h2 class="header">Visitor State of Stay</h2>
+        </div>
+        <div class="flexbox">
+            <div class="pure-u-1">
+                <div id="choropleth_map"></div>
+            </div>
+        </div>
+        <div class="pure-u-1">
+            <h2 class="header">Visitor Demographics</h2>
+        </div>
+        <div class="flexbox">
+            <div class="pure-u-1-2">
+                <div id="tree_map"></div>
+                <p>In this treemap, major countries that are geographically close to Australia have lots of tourists going to Australia, such as <strong>New Zealand</strong> and <strong>China</strong>. Conversely, countries that are further away from Australia tend to have less tourists coming to Australia, such as <strong>Netherlands</strong>, <strong>Italy</strong>, and other <strong>European countries</strong>. This is because there are less direct flights from these countries to Australia, due to the distance.</p>
+            </div>
+            <div class="pure-u-1-2">
+                <div id="bar_chart"></div>
+                <p>In this bar chart, the two main reasons for tourists coming to Australia are for a <strong>holiday</strong> and to <strong>visit friends/relatives</strong>, with <strong>40.7%</strong> and <strong>35.3%</strong> respectively stating these reasons. Australia is a popular holiday destination, because there are nice beaches, warm weather and beautiful landscapes. These features also make Australia an ideal spot for retirement, so young people may visit their retired relatives when they move to Australia.</p>
+            </div>
+        </div>
+    </div>  
+    <h2 class="header">Metadata</h2>
+    <div>
+        <p><strong>Created by:</strong> Jack Bastasin</p>
+        <p><strong>Date:</strong> 13/10/2024</p>
+        <p><strong>Sources:</strong></p>
+        <p>https://www.tra.gov.au/en/international/international-tourism-results</p>
+        <p>https://www.abs.gov.au/statistics/industry/tourism-and-transport/overseas-arrivals-and-departures-australia/jul-2024</p>
+        <p>https://www.abs.gov.au/statistics/people/population/national-state-and-territory-population/latest-release</p>
+    </div>
+    
 </body>
 
 </html>

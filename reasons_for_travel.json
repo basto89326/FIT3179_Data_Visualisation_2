@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 150,
+    "width": 300,
     "height": 215,
     "title": {
         "text": "Reasons for Travel of Incoming Tourists, Year ended June 2024",

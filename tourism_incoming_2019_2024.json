@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 423,
+    "width": 400,
     "height": 247,
     "title": {
         "text": "Tourism Numbers Coming to Australia, 2019 vs 2024",
@@ -64,7 +64,7 @@
             "mark": {
                 "type": "text",
                 "align": "left",
-                "dx": 15,
+                "dx": 13,
                 "dy": -35
             },
 
@@ -72,46 +72,7 @@
                 {"filter": {"field": "Country", "equal": "China"}},
 
                 {
-                    "calculate": "'The number of trips from China ;was ' + datum['Trips'] + ' thousand in ' + datum['Year']",
-                    "as": "text_annotation_raw"
-                },
-
-                {
-                    "calculate": "split(datum.text_annotation_raw, ';')",
-                    "as": "text_annotation"
-                }
-            ],
-
-            "encoding": {
-                "x": {
-                    "field": "Country",
-                    "type": "nominal"
-                },
-
-                "y": {
-                    "aggregate": "sum",
-                    "field": "Trips",
-                    "type": "quantitative"
-                },
-
-                "text": {"field": "text_annotation"}
-            }
-        },
-
-        {
-            "mark": {
-                "type": "text",
-                "align": "left",
-                "dx": 0,
-                "dy": -183
-            },
-
-            "transform": [
-                {"filter": {"field": "Country", "equal": "Other Asia"}},
-                {"filter": {"field": "Year", "equal": "2019"}},
-
-                {
-                    "calculate": "'This is the largest % decrease of ;any country from 2019 to 2024. ;Most countries experienced a ;decrease in tourists coming to ;Australia from 2019 to 2024, likely ;due to COVID-19.'",
+                    "calculate": "'The number of trips from China; was ' + datum['Trips'] + ' thousand in ' + datum['Year']",
                     "as": "text_annotation_raw"
                 },
 
